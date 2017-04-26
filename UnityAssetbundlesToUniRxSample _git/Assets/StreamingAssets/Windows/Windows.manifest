@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 2880167750
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: base_canvas
+      Dependencies: {}
+    Info_1:
+      Name: test_box
+      Dependencies: {}
+    Info_2:
+      Name: bgm/test_bgm
+      Dependencies: {}
+    Info_3:
+      Name: sprites/weapons
+      Dependencies: {}
+    Info_4:
+      Name: weapon_test
+      Dependencies: {}

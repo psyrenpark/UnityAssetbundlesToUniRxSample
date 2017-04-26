@@ -1,0 +1,27 @@
+ManifestFileVersion: 0
+CRC: 42923235
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a28b788d7caa0a0fb60e6d9c4d07f0eb
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 4774d6da9b606debf00b5a5d61c4487c
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/_/Sprites/weapon3.png
+- Assets/_/Sprites/weapon4.png
+- Assets/_/Sprites/weapon9.png
+- Assets/_/Sprites/weapon7.png
+- Assets/_/Sprites/weapon1.png
+- Assets/_/Sprites/weapon5.png
+- Assets/_/Sprites/weapon0.png
+- Assets/_/Sprites/weapon6.png
+- Assets/_/Sprites/weapon2.png
+- Assets/_/Sprites/weapon8.png
+Dependencies: []
