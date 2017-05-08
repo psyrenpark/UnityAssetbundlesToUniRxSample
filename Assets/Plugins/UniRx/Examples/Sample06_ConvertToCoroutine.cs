@@ -17,12 +17,17 @@ namespace UniRx.Examples
             yield return new WaitForSeconds(1);
 
             var v = default(int);
-            yield return Observable.Range(1, 10).StartAsCoroutine(x => v = x);
+            Debug.Log ( v );
+            yield return Observable.Range(1, 10).StartAsCoroutine(x => v = x)
+                .ObserveEveryValueChanged(x=>x)
+                .Subscribe(x=>Debug.Log("1" + x));
 
             Debug.Log(v); // 10(callback is last value)
             yield return new WaitForSeconds(3);
 
-            yield return Observable.Return(100).StartAsCoroutine(x => v = x);
+            yield return Observable.Return(100).StartAsCoroutine(x => v = x)
+                .ObserveEveryValueChanged ( x => x )
+                .Subscribe ( x => Debug.Log ("2 :" + x ) );
 
             Debug.Log(v); // 100
         }

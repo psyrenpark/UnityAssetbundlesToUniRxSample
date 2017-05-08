@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using System.Linq;
+using Unity.Linq;
 
 public class AssetBundleUniRxSample3 : MonoBehaviour {
 
@@ -15,6 +16,8 @@ public class AssetBundleUniRxSample3 : MonoBehaviour {
 
         yield return StartCoroutine ( Initialize () );
 
+        //개별적으로 처리
+        /*
         for (int i = 0 ; i < 3 ; i++ ) {
 
             var temp = i;
@@ -28,6 +31,23 @@ public class AssetBundleUniRxSample3 : MonoBehaviour {
                 AssetBundleManager.UnloadAssetBundle ( assetBundlePath );
             } );
         }
+        */
+
+        //한번에 처리
+
+        Observable.WhenAll (
+            ObservableAssetBundle.LoadAssetBundle<GameObject> ( "test_box" , "TestBox0" ) ,
+            ObservableAssetBundle.LoadAssetBundle<GameObject> ( "test_box" , "TestBox1" ) ,
+            ObservableAssetBundle.LoadAssetBundle<GameObject> ( "test_box" , "TestBox2" ) )
+         .Subscribe ( prefabs => {
+
+                for ( int i = 0 ; i < prefabs.Length ; i++ ) {
+                    GameObject obj = Instantiate ( prefabs[i] ) as GameObject;
+                    obj.transform.position = new Vector3 ( 0.0f + i , 0.0f , 0.0f );
+                }
+                AssetBundleManager.UnloadAssetBundle ( assetBundlePath );
+            } );
+
     }
 
 

@@ -271,7 +271,15 @@ namespace AssetBundles
         {
             return Initialize(Utility.GetPlatformName());
         }
-
+        /*
+        static public AssetBundleLoadManifestOperation Initialize2 () {
+            var manifestAssetBundleName = Utility.GetPlatformName ();
+            LoadAssetBundle ( manifestAssetBundleName , true );
+            var operation = new AssetBundleLoadManifestOperation ( manifestAssetBundleName , "AssetBundleManifest" , typeof ( AssetBundleManifest ) );
+            m_InProgressOperations.Add ( operation );
+            return operation;
+        }
+        */
         /// <summary>
         /// Initializes asset bundle namager and starts download of manifest asset bundle.
         /// Returns the manifest asset bundle downolad operation object.
