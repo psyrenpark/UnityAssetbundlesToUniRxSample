@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //동시 호출 문제
+//해결함 
 
 public class AssetBundleUniRxSample7 : MonoBehaviour {
 
@@ -22,9 +23,9 @@ public class AssetBundleUniRxSample7 : MonoBehaviour {
                 Debug.Log ("name : " + x.GuiName);
             } );
         
-        //rm.CanvasEnabled ( "base_canvas" , "BaseCanvas" , false );
+        rm.CanvasEnabled ( "base_canvas" , "BaseCanvas" , false );
    
-        //rm.ResistPanelToPresenter ( "base_canvas" , "BaseCanvas" , "Panel" , "AssetBundleUniRxSample3",true );
+        rm.ResistPanelToPresenter ( "base_canvas" , "BaseCanvas" , "Panel" , "AssetBundleUniRxSample3",true );
 
 
 

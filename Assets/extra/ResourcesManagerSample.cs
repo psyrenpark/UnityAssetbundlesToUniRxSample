@@ -18,7 +18,6 @@ public class ResourcesManagerSample : Singleton<ResourcesManagerSample> {
             yield return StartCoroutine ( request );
     }
 
-
     private void InitializeSourceURL (string assetBundle_URL ) {
         // If ODR is available and enabled, then use it and let Xcode handle download requests.
 #if ENABLE_IOS_ON_DEMAND_RESOURCES

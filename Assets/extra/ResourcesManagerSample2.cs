@@ -95,46 +95,17 @@ where T : UnityEngine.Object {
         if ( guiObjects.ContainsKey ( assetName ) ) {
             guiObject = guiObjects[ assetName ];
 
-            Callback ( ( guiObject ) );
+            guiObject.CallBackProcess ( Callback );
 
             return;
         }
 
+        ////내부에서 하도록 변경
+        guiObject = GuiObjectsParent.AddComponent<GUIObject>();
+        guiObject.Initialize ( assetBundlePath , assetName );
+        guiObject.CallBackProcess ( Callback );
+        guiObjects.Add ( assetName , guiObject );
 
-        var temp = ObservableAssetBundle.LoadAssetBundle<GameObject> ( assetBundlePath , assetName )
-            .Timeout ( TimeSpan.FromSeconds ( 5 ) )
-            .Subscribe ( obj => {
-
-                if ( obj == null ) {
-
-                    Debug.LogError ( " AssetBundle is null.  Check Asset Path and Name. \n" +
-                            "assetBundlePath : " + assetBundlePath +  
-                            " / " +
-                            "assetName : "+ assetName
-                        );
-
-                    FailAssetBundle ( assetBundlePath , assetName , Callback );
-
-                    return;
-                }
-        
-                var go = Instantiate ( obj , GuiObjectsParent.transform );
-                go.name = assetName;
-
-                guiObject = new GUIObject ( assetBundlePath , assetName , go );
-                guiObjects.Add ( assetName , guiObject );
-
-                Callback ( ( guiObject )  );
-
-                if ( isNowFree ) {
-                    AssetBundleManager.UnloadAssetBundle ( StaticMethod.GetAssetBundleName ( assetName ) );
-                }
-
-            } ,err => {
-
-                FailAssetBundle ( assetBundlePath , assetName , Callback );
-
-            } );
     }
 
     public void ResistPanelToPresenter ( string assetBundlePath,  string canvasName ,
@@ -144,9 +115,11 @@ where T : UnityEngine.Object {
             
            var panelObject = x.GetPenel ( penelName );
             panelObject.SetActive ( flag );
-            Debug.Log ( panelObject.name );
+            //Debug.Log ( panelObject.name );
             var temp = System.Type.GetType ( presnterName );
-            panelObject.AddComponent ( temp );
+           var temp2 = panelObject.AddComponent ( temp );
+            //x.ADD<temp> ( ( Presenter ) temp2 );
+
 
         } );
     }
