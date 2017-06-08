@@ -9,7 +9,7 @@ public class AssetBundleUniRxSample9 : MonoBehaviour {
     // Use this for initialization
     IEnumerator Start () {
 
-        var rm = ResourcesManagerSample2.GetInst;
+        var rm = ResourcesManagerSample.GetInst;
 
         yield return StartCoroutine ( rm.Initialize ( assetBundle_URL ) );
 
